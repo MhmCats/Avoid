@@ -19,10 +19,16 @@ All the libraries used in it are default ones so there is no need to install any
 
 If you wish to run it then type into your terminal (with git installed):
 
-```s
+```sh
 $ git clone https://github.com/MhmCats/Avoid.git
 $ cd Avoid/src
 $ python3 main.py
 ```
+
+Or if you are really lazy you could clone it and then run either `run.bat` or `run.sh`
+
+Feel free to make your own levels but due to the weird implementation that I decided to use they might not turn out as planned...
+
+## Bugs
 
 If you find any bugs then please make a pull request or an issue.
