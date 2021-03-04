@@ -25,8 +25,6 @@ $ cd Avoid/src
 $ python3 main.py
 ```
 
-Or if you are really lazy you could clone it and then run either `run.bat` or `run.sh`
-
 Feel free to make your own levels but due to the weird implementation that I decided to use they might not turn out as planned...
 
 ## Bugs
