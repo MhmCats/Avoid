@@ -22,7 +22,7 @@ class Menu:
         turtle.listen(1.0, 1.0)
         turtle.mainloop()
 
-    def click(self, x, y):
+    def click(self, x: float, y: float):
         if y > -130.0 and y < 26.0:
             if x > -165.0 and x < -70.0:
                 self.launch_game("level-one")
@@ -33,7 +33,7 @@ class Menu:
         else:
             pass
     
-    def launch_game(self, level):
+    def launch_game(self, level: str):
         turtle.bgpic("resources/game_background.png")
         current_game = game.Game((0, -160))
         game.setup()
