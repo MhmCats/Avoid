@@ -48,7 +48,6 @@ class Game:
         self.pos = pos
         self.playing = True
         self.level = None
-        self.score = 0
         self.back = False
         self.player = turtle.Turtle()
     
@@ -76,10 +75,7 @@ class Game:
         
         if self.playing == "win":
             end_time = time.time()
-            if start_time - end_time > 25:
-                score = self.score
-            else:
-                score = (25 - (end_time - start_time)) + self.score
+            score = (end_time - start_time)
             
             print("You won and scored " + str(int(score)))
             self.player.hideturtle()
@@ -118,7 +114,6 @@ class Game:
         self.player.goto(self.pos)
 
     def forward(self):
-        self.score += 1
         level = self.current_level()
         if self.pos[1] != 180:
             self.pos = (self.pos[0], self.pos[1]+20)
@@ -142,7 +137,6 @@ class Game:
         
 
     def backwards(self):
-        self.score += 1
         level = self.current_level()
         if self.pos[1] != -180:
             self.pos = ((self.pos[0], self.pos[1]-20))
@@ -166,7 +160,6 @@ class Game:
         
 
     def left(self):
-        self.score += 1
         level = self.current_level()
         if self.pos[0] != -180:
             self.pos = ((self.pos[0]-20, self.pos[1]))
@@ -188,7 +181,6 @@ class Game:
             self.playing = False
 
     def right(self):
-        self.score += 1
         level = self.current_level()
         if self.pos[0] != 180:
             self.pos = ((self.pos[0]+20, self.pos[1]))

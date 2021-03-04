@@ -25,11 +25,11 @@ class Menu:
     def click(self, x, y):
         if y > -130.0 and y < 26.0:
             if x > -165.0 and x < -70.0:
-                self.launch_game("test")
+                self.launch_game("level-one")
             elif x > -70.0 and x < 40.0:
-                self.launch_game("test")
+                self.launch_game("level-two")
             elif x > 40.0 and x < 150.0:
-                self.launch_game("test")
+                self.launch_game("level-three")
         else:
             pass
     
