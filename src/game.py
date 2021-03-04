@@ -1,5 +1,6 @@
 import turtle
 import os
+import time
 
 from level_handler import load_level
 import menu
@@ -47,6 +48,8 @@ class Game:
         self.pos = pos
         self.playing = True
         self.level = None
+        self.score = 0
+        self.back = False
         self.player = turtle.Turtle()
     
         self.player.shape("square")
@@ -54,9 +57,6 @@ class Game:
         self.player.pensize(20)
         self.player.penup()
         self.player.hideturtle()
-
-        self.score = 0
-        self.back = False
 
     def start(self, level):
         turtle.clear()
@@ -67,6 +67,7 @@ class Game:
         self.player.showturtle()
         
         self.listeners()
+        start_time = time.time()
         
         while self.playing is True:
             if self.back is True:
@@ -74,10 +75,17 @@ class Game:
             self.update()
         
         if self.playing == "win":
-            print("You won and scored " + str(self.score))
+            end_time = time.time()
+            if start_time - end_time > 25:
+                score = self.score
+            else:
+                score = (25 - (end_time - start_time)) + self.score
+            
+            print("You won and scored " + str(int(score)))
             self.player.hideturtle()
             next_menu = menu.Menu()
             next_menu.start()
+
         elif self.playing == "back":
             print("Going back to the main menu...")
             self.player.hideturtle()
