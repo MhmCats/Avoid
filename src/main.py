@@ -1,7 +1,6 @@
 import turtle
 import os
 import _tkinter
-import time
 
 import menu
 
@@ -16,3 +15,9 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nExiting...")
         os._exit(1)
+    except _tkinter.TclError:
+    	print("\nExiting...")
+    	os._exit(1)
+    except turtle.Terminator:
+    	print("\nExiting...")
+    	os._exit(1)

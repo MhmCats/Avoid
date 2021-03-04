@@ -56,6 +56,7 @@ class Game:
         self.player.hideturtle()
 
         self.score = 0
+        self.back = False
 
     def start(self, level):
         turtle.clear()
@@ -68,10 +69,17 @@ class Game:
         self.listeners()
         
         while self.playing is True:
+            if self.back is True:
+                self.playing = "back"
             self.update()
         
         if self.playing == "win":
             print("You won and scored " + str(self.score))
+            self.player.hideturtle()
+            next_menu = menu.Menu()
+            next_menu.start()
+        elif self.playing == "back":
+            print("Going back to the main menu...")
             self.player.hideturtle()
             next_menu = menu.Menu()
             next_menu.start()
@@ -87,13 +95,19 @@ class Game:
         turtle.onkey(self.backwards, "s")
         turtle.onkey(self.left, "a")
         turtle.onkey(self.right, "d")
-        turtle.listen()
+        turtle.onscreenclick(self.back_event)
+        turtle.listen(1.0, 1.0)
+
+    def back_event(self, x, y):
+        if y > 207 and y < 250:
+            if x > -250 and x < -223:
+                self.back = True
+
+    def current_level(self):
+        return load_level(self.level)
 
     def update(self):
         self.player.goto(self.pos)
-    
-    def current_level(self):
-        return load_level(self.level)
 
     def forward(self):
         self.score += 1
@@ -102,12 +116,18 @@ class Game:
             self.pos = (self.pos[0], self.pos[1]+20)
             if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)] == "x":
                 self.playing = False
-            elif level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "x":
-                self.playing = False
+            try:
+                if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "x":
+                    self.playing = False
+            except IndexError:
+                pass
             if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)] == "w":
                 self.playing = "win"
-            elif level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "w":
-                self.playing = "win"
+            try:
+                if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "w":
+                    self.playing = "win"
+            except IndexError:
+                pass
 
         else:
             self.playing = False
@@ -120,12 +140,18 @@ class Game:
             self.pos = ((self.pos[0], self.pos[1]-20))
             if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)] == "x":
                 self.playing = False
-            elif level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "x":
-                self.playing = False
+            try:
+                if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "x":
+                    self.playing = False
+            except IndexError:
+                pass
             if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)] == "w":
                 self.playing = "win"
-            elif level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "w":
-                self.playing = "win"
+            try:
+                if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "w":
+                    self.playing = "win"
+            except IndexError:
+                pass
 
         else:            
             self.playing = False
@@ -138,12 +164,18 @@ class Game:
             self.pos = ((self.pos[0]-20, self.pos[1]))
             if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)] == "x":
                 self.playing = False
-            elif level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "x":
-                self.playing = False
+            try:
+                if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "x":
+                    self.playing = False
+            except IndexError:
+                pass
             if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)] == "w":
                 self.playing = "win"
-            elif level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "w":
-                self.playing = "win"
+            try:
+                if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "w":
+                    self.playing = "win"
+            except IndexError:
+                pass
         else:
             self.playing = False
 
@@ -154,12 +186,18 @@ class Game:
             self.pos = ((self.pos[0]+20, self.pos[1]))
             if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)] == "x":
                 self.playing = False
-            elif level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "x":
-                self.playing = False
+            try:
+                if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "x":
+                    self.playing = False
+            except IndexError:
+                pass
             if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)] == "w":
                 self.playing = "win"
-            elif level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "w":
-                self.playing = "win"
+            try:
+                if level[int((self.pos[1]-200)/20-(self.pos[1]-200)/20*2)][int((self.pos[0]+200)/20)+1] == "w":
+                    self.playing = "win"
+            except IndexError:
+                pass
         else:
             self.playing = False
 
