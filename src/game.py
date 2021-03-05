@@ -2,7 +2,7 @@ import turtle
 import os
 import time
 
-from level_handler import load_level
+from data_handler import load_level
 import menu
 
 class Objects:
@@ -221,7 +221,6 @@ class Game:
 
 def setup(): # This sets up the game screen (not sure why it isn't in the class...)
     turtle.speed(0)
-    turtle.bgcolor("black")
     turtle.shape("square")
     turtle.title("Avoid!")
     turtle.pensize(20)

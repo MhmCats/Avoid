@@ -22,3 +22,17 @@ class Highscores:
 			if x > -250 and x < -223:
 				new_menu = menu.Menu()
 				new_menu.start()
+
+	def make_three_digit(self, num: int):
+		string_number = str(num)
+		if len(string_number) == 3:
+			return string_number
+
+		elif len(string_number) == 2:
+			return "0" + string_number
+
+		elif len(string_number) == 1:
+			return "00" + string_number
+
+		else:
+			return None
