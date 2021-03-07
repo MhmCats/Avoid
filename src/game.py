@@ -4,6 +4,7 @@ import time
 
 from data_handler import load_level, update_highscores, get_highscores
 import menu
+import end_screen
 
 class Objects:
     def __init__(self):
@@ -81,25 +82,21 @@ class Game:
             # The score is calculates by, as you can see, taking the time in seconds 
             # and multiplying it by 2. The aim is to get a low score.
             
-            print("You won and scored " + str(score))
-
             self.update_scores(self.level, score)
 
             self.player.hideturtle()
-            next_menu = menu.Menu() # Initialising a new menu for the core gameloop.
-            next_menu.start()
+            new_end_screen = end_screen.EndScreen()
+            new_end_screen.start("win", score)
 
         elif self.playing == "back":
-            print("Going back to the main menu...") 
             self.player.hideturtle()
             next_menu = menu.Menu()
             next_menu.start()
 
         elif not self.playing:
-            print("You died!")
             self.player.hideturtle()
-            next_menu = menu.Menu()
-            next_menu.start()
+            new_end_screen = end_screen.EndScreen()
+            new_end_screen.start("lose")
 
     def update_scores(self, level_id: str, new_score: int):
         if get_highscores(level_id) == 0:
