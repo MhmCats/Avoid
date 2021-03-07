@@ -26,8 +26,6 @@ class Highscores:
 		self.draw((-80, -236), self.three_digit(data_handler.get_highscores('level-three')))
 
 	def draw(self, start_point: tuple, value: str):
-		turtle.bgpic("resources/highscore_background.png")
-		turtle.setup(width=500, height=500)
 		turtle.color("white")
 		value = list(value)
 		turtle.penup()
