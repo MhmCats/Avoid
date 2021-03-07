@@ -1,8 +1,18 @@
 import json
-import copy
+import os
 
-# This just gets the level from the level file.
-# Nothing really special....
+
+def check_if_exists():
+	if not os.path.exists("level_info/highscores.json"):
+		with open("level_info/highscores.json", "w") as f:
+			json_file_content = """\
+{
+    "level-one": 0,
+    "level-two": 0,
+    "level-three": 0
+}"""
+			f.write(json_file_content)
+
 
 def load_level(level_id: str):
     with open(f"level_info/{level_id}.json") as json_file:
@@ -10,11 +20,13 @@ def load_level(level_id: str):
         return res[level_id]
 
 def get_highscores(level_id: str):
+	check_if_exists()
 	with open("level_info/highscores.json") as json_file:
 		res = json.load(json_file)
 		return res[level_id]
 
 def update_highscores(level_id: str, new_highscore: int):
+	check_if_exists()
 	new_content = "{"
 	if level_id == "level-one":
 		new_content += f'\n\t"level-one": {new_highscore},'

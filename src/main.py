@@ -6,16 +6,6 @@ import menu
 # Importing the menu as we have to start off in the menu screen
 
 if __name__ == "__main__":
-    
-    if not os.path.exists("level_info/highscores.json"):
-        with open("level_info/highscores.json", "w") as f:
-            json_file_content = """\
-{
-    "level-one": 0,
-    "level-two": 0,
-    "level-three": 0
-}"""
-            f.write(json_file_content)
 
     try:
         start_menu = menu.Menu() # The Menu class' __init__ being called
