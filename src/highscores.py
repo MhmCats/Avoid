@@ -41,7 +41,6 @@ class Highscores:
 
 
 	def click(self, x: float, y: float):
-		print(x, y)
 		if y > 207 and y < 250:
 			if x > -250 and x < -223:
 				new_menu = menu.Menu()

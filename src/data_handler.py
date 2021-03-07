@@ -19,7 +19,7 @@ def update_highscores(level_id: str, new_highscore: int):
 	if level_id == "level-one":
 		new_content += f'\n\t"level-one": {new_highscore},'
 	else:
-		new_content += f'\n\t"level-one": {get_highscores("level-one")}'
+		new_content += f'\n\t"level-one": {get_highscores("level-one")},'
 	
 	if level_id == "level-two":
 		new_content += f'\n\t"level-two": {new_highscore},'
@@ -27,7 +27,7 @@ def update_highscores(level_id: str, new_highscore: int):
 		new_content += f'\n\t"level-two": {get_highscores("level-two")},'
 	
 	if level_id == "level-three":
-		new_content += f'\n\t"level-three": {new_highscore},'
+		new_content += f'\n\t"level-three": {new_highscore}'
 	else:
 		new_content += f'\n\t"level-three": {get_highscores("level-three")}'
 
