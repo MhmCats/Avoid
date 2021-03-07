@@ -11,6 +11,7 @@ class Menu:
         pass
 
     def setup(self):
+        turtle.clear()
         turtle.hideturtle()
         turtle.bgpic("resources/menu_background.png") # This is sized to fit to the 500x500 pixel screen
         turtle.title("Avoid! Menu")
