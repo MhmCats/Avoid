@@ -2,7 +2,7 @@ import turtle
 import os
 import time
 
-from data_handler import load_level
+from data_handler import load_level, update_highscores, get_highscores
 import menu
 
 class Objects:
@@ -82,6 +82,9 @@ class Game:
             # and multiplying it by 2. The aim is to get a low score.
             
             print("You won and scored " + str(score))
+
+            self.update_scores(self.level, score)
+
             self.player.hideturtle()
             next_menu = menu.Menu() # Initialising a new menu for the core gameloop.
             next_menu.start()
@@ -97,6 +100,16 @@ class Game:
             self.player.hideturtle()
             next_menu = menu.Menu()
             next_menu.start()
+
+    def update_scores(self, level_id: str, new_score: int):
+        if get_highscores(level_id) == 0:
+            update_highscores(level_id, new_score)
+        
+        elif get_highscores(level_id) <= new_score:
+            pass
+        
+        elif get_highscores(level_id) > new_score:
+            update_highscores(level_id, new_score)
             
 
     def listeners(self):
