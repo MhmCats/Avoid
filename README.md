@@ -4,6 +4,8 @@ Avoid is a game that I wrote in Python using the turtle library.
 
 All the libraries used in it are default ones so there is no need to install anything...
 
+All the sounds apart from `win.wav` were sourced from https://myinstants.com/, `win.wav` is from https://arcade.acadamy/resources.html
+
 ## Screenshots
 
 ### Menu

@@ -2,6 +2,11 @@ import turtle
 import os
 import time
 
+try:
+    import winsound
+except ImportError:
+    pass
+
 from data_handler import load_level, update_highscores, get_highscores
 import menu
 import end_screen
@@ -85,6 +90,10 @@ class Game:
             self.update_scores(self.level, score)
 
             self.player.hideturtle()
+            try:
+                winsound.PlaySound("resources/win.wav", winsound.SND_FILENAME)
+            except NameError:
+                pass
             new_end_screen = end_screen.EndScreen()
             new_end_screen.start("win", score)
 
@@ -95,6 +104,10 @@ class Game:
 
         elif not self.playing:
             self.player.hideturtle()
+            try:
+                winsound.PlaySound("resources/game_over.wav", winsound.SND_FILENAME)
+            except NameError:
+                pass
             new_end_screen = end_screen.EndScreen()
             new_end_screen.start("lose")
 

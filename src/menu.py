@@ -1,14 +1,19 @@
 import turtle
 import os
 
+try:
+    import winsound
+except ImportError:
+    pass
+
 import highscores
 import game
 # The game file is imported as we actually start an instance of it 
 # here.
 
 class Menu:
-    def __init__(self):
-        pass
+    def __init__(self, play: bool = False):
+        self.play = play
 
     def setup(self):
         turtle.clear()
@@ -19,6 +24,11 @@ class Menu:
 
     def start(self):
         self.setup()
+        if self.play:
+            try:
+                winsound.PlaySound("resources/start.wav", winsound.SND_FILENAME)
+            except NameError:
+                pass
         turtle.onscreenclick(self.click, btn=1)
         turtle.listen(1.0, 1.0)
         turtle.mainloop()
