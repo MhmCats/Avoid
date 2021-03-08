@@ -27,6 +27,17 @@ $ cd Avoid/src
 $ python3 main.py
 ```
 
+There is also an optional arguement that you can pass:
+```sh
+$ python3 main.py --startsound
+```
+This will play a sound upon starting.
+
+As well as this there is a `--level` arguement that boots the game straight into the level:
+```sh
+$ python3 main.py --level level-one
+```
+
 Feel free to make your own levels but due to the weird implementation that I decided to use they might not turn out as planned...
 
 ## Bugs
