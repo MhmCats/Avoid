@@ -7,12 +7,15 @@ import argparse
 import menu
 import game
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-s", "--startsound",
-                    help="Play the start sound or not.", 
+parser = argparse.ArgumentParser(prog="python3 main.py",
+                                 description="Have fun playing the beautiful start sound...",
+                                 epilog="Enjoy playing Avoid!")
+parser.add_argument("--startsound",
+                    help=": play the start sound or not", 
                     action="store_true")
-parser.add_argument("-l", "--level",
-                    help="Specify a level you want to play.")
+parser.add_argument("--level",
+                    help=": specify a level you want to play",
+                    metavar="level-name")
 args = parser.parse_args()
 
 if __name__ == "__main__":
